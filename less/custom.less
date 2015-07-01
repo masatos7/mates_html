@@ -3,15 +3,65 @@
 // --------------------------------------------------
 
 
+@primary:	#303EA0;
+@secondary:	#4051B6;
+@line-color: #E9E9E9;			
+@bgcolor1: #E9E9E9;
+@bgcolor2: #F6F6F6;
+
 // Navbar
 .navbar {
-	background-color: @brand-primary;
+	background-color: @primary;
+	border: 0px;
+}
+
+body{
+	padding: 50px 0px;
+	font-size: 14px;
 }
 
 h2{
-	font-size: 20px;
+	color: #ffffff;
+	padding:10px 0px;
+	margin: 0px;
+	font-size: 14px;
+	background-color: @secondary;
 }
 
-#page{
-		font-size: 500px;
+.month{
+	padding: 6px;
+	border-bottom: @line-color solid 1px;	
 }
+
+#week{
+
+}
+
+#date{
+	background-color: @bgcolor2;
+	h3{
+		font-size: 0.9285em; //13px
+		padding: 1em;
+		margin: 0;
+	}
+}
+
+#period{
+	background-color: @bgcolor1;
+	padding: 4px;
+}
+
+.category{
+	background-color: @bgcolor2;
+	padding: 4px;
+}
+
+.subject{
+	padding: 6px;
+	border-bottom: @line-color solid 1px;	
+	h3{
+		font-size: 1.4286em; //20px
+	}
+}
+
+

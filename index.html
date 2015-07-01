@@ -34,24 +34,157 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-  <div class="container text-center" id="page">
-    <h2>カレンダー</h2>
-    <h2>カレンダー</h2>
-    <h2>カレンダー</h2>
-    <h2>カレンダー</h2>
+  <div class="row">
+    <div class="container-fluid text-center">
+      <h2>カレンダー</h2>
+    </div><!-- container -->
+  </div><!-- row -->
+  <div class="row month">
+    <div class="container-fluid">
+      <div class="col-xs-4 col-sm-4">
+        &lt;&lt;6月
+      </div>
+      <div class="col-xs-4 col-sm-4 text-center">
+        7月
+      </div>
+      <div class="col-xs-4 col-sm-4 text-right">
+        8月&gt;&gt;
+      </div>
+    </div><!-- container-fluid -->
+  </div><!-- row month -->
+
+    <div id="calender">aa
+<SCRIPT type="text/JavaScript">
+<!--
+now = new Date();
+var nYear = now.getFullYear();
+var nMonth = now.getMonth();
+var nDate = now.getDate();
+
+var date1 = new Date(nYear, nMonth, nDate - 3);
+var date2 = new Date(nYear, nMonth, nDate - 2);
+var date3 = new Date(nYear, nMonth, nDate - 1);
+
+var date5 = new Date(nYear, nMonth, nDate + 1);
+var date6 = new Date(nYear, nMonth, nDate + 2);
+var date7 = new Date(nYear, nMonth, nDate + 3);
+
+document.write(date1.getDate());
+document.write(date2.getDate());
+document.write(date3.getDate());
+document.write(nDate);
+document.write(date5.getDate());
+document.write(date6.getDate());
+document.write(date7.getDate());
+//-->
+</SCRIPT>
+    </div>
+
+  <div class="row" id="date">
+    <div class="container text-center">
+      <h3>7月4日（土）</h3>
+    </div>
+    <ul>
+      <li>ログイン期間</li>
+      <li>休講</li>
+    </ul>
   </div>
-    <div class="page"></div>
+
+  <div class="row">
+    <div class="container-fluid text-center">
+      <h2>学習状況</h2>
+    </div><!-- container -->
+  </div><!-- row -->
+
+  <div class="row" id="period">
+    <div class="container-fluid text-center">
+      <label  class="col-xs-2 control-label">期間</label>
+      <div class="col-xs-10">
+        <select class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    </div><!-- container -->
+  </div><!-- row -->
+  <div class="container col-sm-4 col-md-4">
+    <div class="row category">
+      <div class="col-xs-4">
+        時間順
+      </div>
+      <div class="col-xs-4 text-center">
+        達成度
+      </div>
+      <div class="col-xs-4 text-right">
+        苦手順
+      </div>
+    </div><!-- row -->
+    <div class="row subject">
+      <h3>全体</h3>
+    </div>
+    <div class="row subject">
+      <h3>英検</h3>
+    </div>
+    <div class="row subject">
+      <h3>数学</h3>
+    </div>
+  </div><!-- container -->
+
+  <div class="container col-sm-4 col-md-4">
+    <div class="row category">
+      <div class="col-xs-4">
+        時間順
+      </div>
+      <div class="col-xs-4 text-center">
+        達成度
+      </div>
+      <div class="col-xs-4 text-right">
+        苦手順
+      </div>
+    </div><!-- row -->
+    <div class="row subject">
+      <h3>全体</h3>
+    </div>
+    <div class="row subject">
+      <h3>英検</h3>
+    </div>
+    <div class="row subject">
+      <h3>数学</h3>
+    </div>
+  </div><!-- container -->
+
+  <div class="container col-sm-4 col-md-4">
+    <div class="row category">
+      <div class="col-xs-4">
+        時間順
+      </div>
+      <div class="col-xs-4 text-center">
+        達成度
+      </div>
+      <div class="col-xs-4 text-right">
+        苦手順
+      </div>
+    </div><!-- row -->
+    <div class="row subject">
+      <h3>全体</h3>
+
+    </div>
+    <div class="row subject">
+      <h3>英検</h3>
+    </div>
+    <div class="row subject">
+      <h3>数学</h3>
+    </div>
+  </div><!-- container -->
+
+
+
     <div class="container col-sm-12 col-lg-12">
       <div>
         <form role="form">
-          <div class="form-group">
-            <label>ID</label>
-            <input type="pass" class="form-control" id="email">
-          </div>
-          <div class="form-group">
-            <label>パスワード</label>
-            <input type="password" class="form-control" id="pwd">
-          </div>
           <div class="container text-center">
             <button type="submit" class="btn btn-success btn-lg">ログイン</button>
           </div><!-- container -->
