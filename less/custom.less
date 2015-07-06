@@ -3,21 +3,21 @@
 // --------------------------------------------------
 
 
-@primary:	#303EA0;
-@secondary:	#4051B6;
 @line-color: #E9E9E9;			
 @bgcolor1: #E9E9E9;
 @bgcolor2: #F6F6F6;
+@bgcolor3: #FaFaFa;
+@fontcolor1: #333333;
 
-// Navbar
-.navbar {
-	background-color: @primary;
-	border: 0px;
-}
 
 body{
 	padding: 50px 0px;
 	font-size: 14px;
+}
+
+#login{
+  background-color: @brand-primary;
+  color: #ffffff;
 }
 
 h2{
@@ -25,7 +25,13 @@ h2{
 	padding:10px 0px;
 	margin: 0px;
 	font-size: 14px;
-	background-color: @secondary;
+	background-color: @brand-secondary;
+}
+
+// Navbar
+.navbar {
+  background-color: @brand-primary;
+  border: 0px;
 }
 
 .month{
@@ -56,12 +62,174 @@ h2{
 	padding: 4px;
 }
 
-.subject{
-	padding: 6px;
-	border-bottom: @line-color solid 1px;	
-	h3{
-		font-size: 1.4286em; //20px
+
+
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: @line-height-computed;
+  margin: 0;
+  padding: 0;
+  // Cells
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        padding: @table-cell-padding;
+        line-height: @line-height-base;
+        vertical-align: top;
+        border-top: 0px solid @table-border-color;
+      }
+    }
+  }
+  // Bottom align for column headings
+  > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid @table-border-color;
+  }
+  // Remove top border from thead by default
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+    > tr:first-child {
+      > th,
+      > td {
+        border-top: 0;
+      }
+    }
+  }
+  // Account for multiple tbody instances
+  > tbody + tbody {
+    border-top: 2px solid @table-border-color;
+  }
+
+  // Nesting
+  .table {
+    background-color: @body-bg;
+  }
+}
+
+.table{
+	td{
+		width: 14.286%;
 	}
+}
+
+.dates{
+	font-size: 1.4286em; //20px
+}
+
+.row{
+  position:relative;
+  padding: 0;
+  }
+
+
+.row.subject{
+  height: 60px;
+  border-bottom: @line-color solid 1px; 
+  .container{
+    margin: 0 20px;
+    padding: 0;
+  }
+
+  a{
+    color: @fontcolor1;
+    display:block;
+    width:100%;
+    height:100%;
+    padding: 0 20px;
+    position:absolute;
+    left:0;
+    top:0;
+  }
+
+  a:hover{
+    background-color: @bgcolor3;
+    text-decoration: none;
+
+  }
+
+  h3{
+
+    margin: 18px 0 4px 0;
+    padding: 0;
+    font-size: 1.0714em; //15px
+    :hover{
+      text-decoration: none;
+    }
+  }
+
+  svg{
+    margin: 40px 0 0 0;
+  }
+
+  img{
+    position: absolute;
+    top: 14px;
+    left: 94%;
+  }
+}
+
+.category{
+    text-align:center;
+}
+
+.category ul{
+    text-align:center;
+    display:block;
+    margin:auto;
+}
+
+table .single-item{
+	padding: 0;
+	margin-bottom: 0px;
+}
+
+.today{
+	background-color: @brand-primary;
+	color: #fff;
+}
+
+#footer-nav{
+  padding: 30px 0px;
+  background-color: @bgcolor3;
+}
+
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+}
+
+.category {
+    overflow: hidden;
+    position: relative;
+}
+
+.category ul {
+    float: left;
+    margin: 0 0 0 0;
+    padding: 0;
+    position: relative;
+    left: 50%;
+}
+.category ul li {
+    float: left;
+    margin-right: 5px;
+    padding: 5px;
+    position: relative;
+    left: -50%;
+}
+
+.btn-category {
+  .button-size(0; 0px; 1em; 0.7em; 0px);
 }
 
 
