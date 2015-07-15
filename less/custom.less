@@ -8,10 +8,11 @@
 @bgcolor2: #F6F6F6;
 @bgcolor3: #FaFaFa;
 @fontcolor1: #333333;
+@fontcolor2: #999999;
 
 
 body{
-	padding: 50px 0px;
+	padding: 50px 0 0 0;
 	font-size: 14px;
 }
 
@@ -24,7 +25,7 @@ h2{
 	color: #ffffff;
 	padding:10px 0px;
 	margin: 0px;
-	font-size: 14px;
+	font-size: 1em;
 	background-color: @brand-secondary;
 }
 
@@ -34,23 +35,94 @@ h2{
   border: 0px;
 }
 
-.month{
-	padding: 6px;
-	border-bottom: @line-color solid 1px;	
-}
-
 #week{
 
 }
 
-#date{
-	background-color: @bgcolor2;
-	h3{
-		font-size: 0.9285em; //13px
-		padding: 1em;
-		margin: 0;
-	}
+//calender
+.clndr-next-button{
+
 }
+
+.row.month{
+  padding: 10px;
+  font-size: 0.857em; //12px
+  border-bottom: @line-color solid 1px; 
+}
+
+td.day{
+  height: 3.5em;
+}
+
+td.day:hover{
+  background-image: url('../img/circle_bg.svg');
+  background-size: 2.2em;
+  background-repeat: no-repeat;
+  background-position: 50% top;
+}
+
+td.today:hover{
+  background-image: url('../img/circle_blue.svg');
+  background-size: 2.2em;
+  background-repeat: no-repeat;
+  background-position: 50% top;
+  color: #fff;
+}
+
+.day{
+  position:relative;
+}
+
+.day-contents{
+  margin: 0;
+  padding: 0;
+}
+
+.day svg{
+  position:relative;
+  top: -0.2em;
+  margin: 0 2px;
+}
+
+.today{
+  background-image: url('../img/circle_blue.svg');
+  background-size: 2em;
+  background-repeat: no-repeat;
+  background-position: 50% top;
+  color: #fff;
+}
+
+table .single-item{
+  padding: 0;
+  margin-bottom: 0px;
+}
+
+#date{
+  border-top: @line-color solid 1px; 
+  background-color: @bgcolor2;
+  padding-bottom: 20px;
+  h3{
+    font-size: 0.9285em; //13px
+    padding: 1em;
+    margin: 0;
+  }
+  ul{
+    margin: 0;
+    padding: 0;
+  }
+  li {
+  margin-left:0px;
+  list-style-type: none;
+  }
+  svg{
+    margin-right:5px;
+  }
+}
+
+#date .button_area{
+  text-align: right;
+}
+
 
 #period{
 	background-color: @bgcolor1;
@@ -128,7 +200,8 @@ h2{
   }
 
 
-.row.subject{
+.subject{
+  position:relative;
   height: 60px;
   border-bottom: @line-color solid 1px; 
   .container{
@@ -164,7 +237,7 @@ h2{
   }
 
   svg{
-    margin: 40px 0 0 0;
+    margin: 40px 0 0 20px;
   }
 
   img{
@@ -184,17 +257,10 @@ h2{
     margin:auto;
 }
 
-table .single-item{
-	padding: 0;
-	margin-bottom: 0px;
-}
 
-.today{
-	background-color: @brand-primary;
-	color: #fff;
-}
 
 #footer-nav{
+  margin: 0p;
   padding: 30px 0px;
   background-color: @bgcolor3;
 }
@@ -232,4 +298,26 @@ table .single-item{
   .button-size(0; 0px; 1em; 0.7em; 0px);
 }
 
+
+//lesson
+//student
+
+.info{
+  padding: 20px 40px;
+}
+
+.info tr{
+  border-bottom: @line-color solid 1px; 
+}
+
+.info td{
+  color: @fontcolor1;
+  font-size: 1.143em; //16px
+}
+
+.info .title{
+  color: @fontcolor2;
+  vertical-align: bottom;
+  font-size: 0.857em; //12px
+}
 

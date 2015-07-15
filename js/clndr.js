@@ -52,6 +52,7 @@
     "</thead>" +
     "</table>" +
     "</div></div>" +
+    
     "<div class='single-item'>" +
     "<% for(var i = 0; i < numberOfRows; i++){ %>" +
       "<div class='row'><div class='container-fluid'>" +
@@ -98,6 +99,8 @@
     classes: {
       today: "today",
       event: "event",
+      student: "student",
+      lesson: "lesson",
       past: "past",
       lastMonth: "last-month",
       nextMonth: "next-month",
@@ -435,7 +438,15 @@
       extraClasses += (" " + this.options.classes.past);
     }
     if(eventsToday.length) {
+    console.log(eventsToday[0].category);
       extraClasses += (" " + this.options.classes.event);
+      for(var i = 0; i < eventsToday.length; i++){
+        if(eventsToday[i].category == 'student'){
+          extraClasses += (" " + this.options.classes.student);
+        }else if(eventsToday[i].category == 'lesson'){
+          extraClasses += (" " + this.options.classes.lesson);
+        }
+      }
     }
     if(!this.options.lengthOfTime.days) {
       if(this._currentIntervalStart.month() > day.month()) {
@@ -712,7 +723,7 @@
         } else {
           target.events = $.makeArray( $(this.options.events).filter( function() {
             // filter the dates down to the ones that match.
-            return this._clndrDateObject.format('YYYY-MM-DD') == dateString;
+            return this._clndrDateObject.format('YYYY-MM-DD') == dateString;//不明なのでとりあえずコメントアウト
           }) );
         }
       }
@@ -1182,7 +1193,7 @@
     for(i; i < l; i++) {
       // stuff a _clndrDateObject in each event, which really, REALLY should not be
       // overriding any existing object... Man that would be weird.
-      // events[i]._clndrDateObject = moment( events[i][self.options.dateParameter] );
+      events[i]._clndrDateObject = moment( events[i][self.options.dateParameter] );
       events[i]._clndrStartDateObject = moment( events[i][self.options.dateParameter] );
       events[i]._clndrEndDateObject = moment( events[i][self.options.dateParameter] );
     }

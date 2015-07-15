@@ -4,9 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>あとで</title>
+    <title>タイトル</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <link href="css/slick-theme.css" rel="stylesheet">
     <link href="css/slick.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -17,66 +16,131 @@
     <![endif]-->
 
   </head>
-  <body>
-  <nav class="navbar navbar-default navbar-fixed-top navbar-right" role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">ログアウト</a></li>
-          <li><a href="#">生徒情報</a></li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
+<body>
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-right" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="login.html">ログアウト</a></li>
+              <li><a href="student.html">生徒情報</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </header>
+
+<div class="container col-xs-12 col-md-3 col-lg-3" id="Left">
   <div class="row">
-    <div class="container-fluid text-center">
+    <div class="text-center">
       <h2>カレンダー</h2>
     </div><!-- container -->
   </div><!-- row -->
 
-  <div class="row month">
-    <div class="container-fluid">
-      <div class="col-xs-4 col-sm-4">
-        &lt;&lt;6月
+  <div id="cal1"></div>
+  <script type="text/template" id="template-calendar1">
+    <div class='row month'>
+      <div class='clndr-controls'>
+        <div class='clndr-previous-button col-xs-4 col-sm-4'>&lt;&lt;<%= moment(this.month).subtract("months", 1).month()+1 %>月</div>
+        <div class='col-xs-4 col-sm-4 text-center'><%= year %>年<%= moment(this.month).month()+1 %>月</div>
+        <div class='col-xs-4 col-sm-4 text-right clndr-next-button'><%= moment(this.month).add("months", 1).month()+1 %>月&gt;&gt;</div>
       </div>
-      <div class="col-xs-4 col-sm-4 text-center">
-        7月
-      </div>
-      <div class="col-xs-4 col-sm-4 text-right">
-        8月&gt;&gt;
-      </div>
-    </div><!-- container-fluid -->
-  </div><!-- row month -->
+    </div><!-- row month -->
 
-  <div id="adjacent"></div>    
+    <div class="row">
+      <div class="container-fluid">
+        <table class="table" border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr class="header-days">
+      <% for(var i = 0; i < daysOfTheWeek.length; i++) { %>
+        <td class="header-day text-center"><%= daysOfTheWeek[i] %></td>
+      <% } %>
+            </tr>
+          </thead>
+        </table>
+      </div><!-- container-fluid -->
+    </div><!-- row month -->
+
+    <div class='single-item'>
+    <% for(var i = 0; i < numberOfRows; i++){ %>
+      <div class='row'><div class='container-fluid'>
+      <table class='table' border='0' cellspacing='0' cellpadding='0'>
+      <tr class='dates'>
+      <% for(var j = 0; j < 7; j++){ %>
+      <% var d = j + i * 7; %>      
+      <td class='<%= days[d].classes %> text-center'><div class='day-contents'><%= days[d].day %>
+      </div></td>
+      <% } %>
+      </tr>
+      </table>
+      </div></div>
+    <% } %>
+    </div>
+    </script>
+
+    <div id="cal2"></div>
+  <script type="text/template" id="template-calendar2">
+    <div class='row month'>
+      <div class='clndr-controls'>
+        <div class='clndr-previous-button col-xs-4 col-sm-4 col-md-4 col-lg-4'>&lt;&lt;<%= moment(this.month).subtract("months", 1).month()+1 %>月</div>
+        <div class='col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center'><%= year %>年<%= moment(this.month).month()+1 %>月</div>
+        <div class='col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right clndr-next-button'><%= moment(this.month).add("months", 1).month()+1 %>月&gt;&gt;</div>
+      </div>
+    </div><!-- row month --> 
+    <div class="row">
+      <table class="table" border="0" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr class="header-days">
+      <% for(var i = 0; i < daysOfTheWeek.length; i++) { %>
+        <td class="header-day text-center"><%= daysOfTheWeek[i] %></td>
+      <% } %>
+            </tr>
+    <% for(var i = 0; i < numberOfRows; i++){ %>
+      <tr class='dates'>
+      <% for(var j = 0; j < 7; j++){ %>
+      <% var d = j + i * 7; %>      
+      <td class='<%= days[d].classes %> text-center'><div class='day-contents'><%= days[d].day %>
+      </div></td>
+      <% } %>
+      </tr>
+    <% } %>
+        </thead>
+      </table>
+    </div>
+    </script>
+
 
   <div class="row" id="date">
-    <div class="container text-center">
-      <h3>7月4日（土）</h3>
+    <div class="text-center">
+      <h3></h3>
     </div>
-    <ul>
-      <li>ログイン期間</li>
-      <li>休講</li>
-    </ul>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <ul></ul>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 button_area">
+    </div>
   </div>
+</div><!-- container -->
+
+<div class="container col-xs-12 col-md-9 col-lg-9" id="Right">
   <div class="row">
-    <div class="container-fluid text-center">
+    <div class="text-center">
       <h2>学習状況</h2>
     </div><!-- container -->
   </div><!-- row -->
 
   <div class="row" id="period">
-    <div class="container-fluid text-center">
-      <label  class="col-xs-2 control-label">期間</label>
+    <div class="text-center">
+      <label class="col-xs-2 control-label">期間</label>
       <div class="col-xs-10">
         <select class="form-control">
           <option>1</option>
@@ -89,108 +153,96 @@
     </div><!-- container -->
   </div><!-- row -->
 
-  <div class="container col-sm-4 col-md-4 category01">
-    <div class="row category text-center">
-      <ul class="nav nav-pills btn-category">
-        <li role="presentation" class="active"><a href="#">時間順</a></li>
-        <li role="presentation" class="hidden-sm hidden-md hidden-lg"><a href="#">達成度</a></li>
-        <li role="presentation" class="hidden-sm hidden-md hidden-lg"><a href="#">苦手順</a></li>
-      </ul>
-    </div>
-    <div class="row subject">
-      <div class="container">
+  <div class="row">
+    <div id="category01" class="category01">
+      <div class="category text-center">
+        <ul class="nav nav-pills btn-category">
+          <li role="presentation" class="active"><a href="#category01">時間順</a></li>
+          <li role="presentation" class="hidden-sm hidden-md hidden-lg"><a href="#category02">達成度</a></li>
+          <li role="presentation" class="hidden-sm hidden-md hidden-lg"><a href="#category03">苦手順</a></li>
+        </ul>
+      </div>
+      <div class="subject">
         <a href="#"><h3></h3></a>
-        <svg class="col-xs-12 col-sm-3 col-md-3 col-lg-4" height="6"></svg>
+        <svg class="col-xs-10 col-sm-10 col-md-11 col-lg-11" height="6"></svg>
         <img src="img/arrow.svg" />
       </div>
-    </div>
-    <div class="row subject">
-      <div class="container">
+      <div class="subject">
         <a href="#"><h3></h3></a>
-        <svg class="col-xs-12 col-sm-3 col-md-3 col-lg-4" height="6"></svg>
+        <svg class="col-xs-10 col-sm-10 col-md-11 col-lg-11" height="6"></svg>
         <img src="img/arrow.svg" />
       </div>
-    </div>
-    <div class="row subject">
-      <div class="container">
+      <div class="subject">
         <a href="#"><h3></h3></a>
-        <svg class="col-xs-12 col-sm-3 col-md-3 col-lg-4" height="6"></svg>
+        <svg class="col-xs-10 col-sm-10 col-md-11 col-lg-11" height="6"></svg>
         <img src="img/arrow.svg" />
       </div>
-    </div>
-  </div><!-- container -->
-
-  <div class="container col-sm-4 col-md-4 category02">
-    <div class="row category">
-      <ul class="nav nav-pills btn-category">
-        <li role="presentation" class="hidden-sm hidden-md hidden-lg"><a href="#">時間順</a></li>
-        <li role="presentation" class="active"><a href="#">達成度</a></li>
-        <li role="presentation" class="hidden-sm hidden-md hidden-lg"><a href="#">苦手順</a></li>
-      </ul>
-    </div>
-    <div class="row subject">
-      <div class="container">
-        <a href="#"><h3></h3></a>
-        <svg class="col-xs-12 col-sm-3 col-md-3 col-lg-4" height="6"></svg>
-        <img src="img/arrow.svg" />
-      </div>
-    </div>
-    <div class="row subject">
-      <div class="container">
-        <a href="#"><h3></h3></a>
-        <svg class="col-xs-12 col-sm-3 col-md-3 col-lg-4" height="6"></svg>
-        <img src="img/arrow.svg" />
-      </div>
-    </div>
-    <div class="row subject">
-      <div class="container">
-        <a href="#"><h3></h3></a>
-        <svg class="col-xs-12 col-sm-3 col-md-3 col-lg-4" height="6"></svg>
-        <img src="img/arrow.svg" />
-      </div>
-    </div>
-  </div><!-- container -->
-
-  <div class="container col-sm-4 col-md-4 category03">
-    <div class="row category text-center">
-      <ul class="nav nav-pills btn-category">
-        <li role="presentation" class="hidden-sm hidden-md hidden-lg"><a href="#">時間順</a></li>
-        <li role="presentation" class="hidden-sm hidden-md hidden-lg"><a href="#">達成度</a></li>
-        <li role="presentation" class="active"><a href="#">苦手順</a></li>
-      </ul>
-    </div>
-    <div class="row subject">
-      <div class="container">
-        <a href="#"><h3></h3></a>
-        <svg class="col-xs-12 col-sm-3 col-md-3 col-lg-4" height="6"></svg>
-        <img src="img/arrow.svg" />
-      </div>
-    </div>
-    <div class="row subject">
-      <div class="container">
-        <a href="#"><h3></h3></a>
-        <svg class="col-xs-12 col-sm-3 col-md-3 col-lg-4" height="6"></svg>
-        <img src="img/arrow.svg" />
-      </div>
-    </div>
-    <div class="row subject">
-      <div class="container">
-        <a href="#"><h3></h3></a>
-        <svg class="col-xs-12 col-sm-3 col-md-3 col-lg-4" height="6"></svg>
-        <img src="img/arrow.svg" />
-      </div>
-    </div>       
-  </div><!-- container -->
-
-  <div class="container col-sm-12 col-md-12 col-lg-12" id="footer-nav">
-    <div>
-      <form action="login.html" role="form">
-        <div class="container text-center">
-          <button type="submit" class="btn btn-success btn-lg">ログアウト</button>
-        </div><!-- container -->
-      </form>
     </div><!-- container -->
-  </div><!-- container text-center -->
+  </div><!-- row -->
+
+  <div class="row">
+    <div id="category02" class="category02">
+      <div class="category">
+        <ul class="nav nav-pills btn-category">
+          <li role="presentation" class="hidden-sm hidden-md hidden-lg"><a href="#category01">時間順</a></li>
+          <li role="presentation" class="active"><a href="#category02">達成度</a></li>
+          <li role="presentation" class="hidden-sm hidden-md hidden-lg"><a href="#category03">苦手順</a></li>
+        </ul>
+      </div>
+      <div class="subject">
+        <a href="#"><h3></h3></a>
+        <svg class="col-xs-10 col-sm-10 col-md-11 col-lg-11" height="6"></svg>
+        <img src="img/arrow.svg" />
+      </div>
+      <div class="subject">
+        <a href="#"><h3></h3></a>
+        <svg class="col-xs-10 col-sm-10 col-md-11 col-lg-11" height="6"></svg>
+        <img src="img/arrow.svg" />
+      </div>
+      <div class="subject">
+        <a href="#"><h3></h3></a>
+        <svg class="col-xs-10 col-sm-10 col-md-11 col-lg-11" height="6"></svg>
+        <img src="img/arrow.svg" />
+      </div>
+    </div><!-- container -->
+  </div><!-- row -->
+
+  <div class="row">
+    <div id="category03" class="category03">
+      <div class="category">
+        <ul class="nav nav-pills btn-category">
+          <li role="presentation" class="hidden-sm hidden-md hidden-lg"><a href="#category01">時間順</a></li>
+          <li role="presentation" class="hidden-sm hidden-md hidden-lg"><a href="#category02">達成度</a></li>
+          <li role="presentation" class="active"><a href="#">苦手順</a></li>
+        </ul>
+      </div>
+      <div class="subject">
+        <a href="#"><h3></h3></a>
+        <svg class="col-xs-10 col-sm-10 col-md-11 col-lg-11" height="6"></svg>
+        <img src="img/arrow.svg" />
+      </div>
+      <div class="subject">
+        <a href="#"><h3></h3></a>
+        <svg class="col-xs-10 col-sm-10 col-md-11 col-lg-11" height="6"></svg>
+        <img src="img/arrow.svg" />
+      </div>
+      <div class="subject">
+        <a href="#"><h3></h3></a>
+        <svg class="col-xs-10 col-sm-10 col-md-11 col-lg-11" height="6"></svg>
+        <img src="img/arrow.svg" />
+      </div>       
+    </div><!-- container -->
+  </div><!-- row -->
+</div>
+
+<div class="container-fluid text-center">
+  <div class="row "id="footer-nav">
+    <form action="login.html" role="form">
+        <button type="submit" class="btn btn-success btn-lg">ログアウト</button>
+    </form>
+  </div>
+</div>
+
 
     <!-- Bootstrap -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -204,11 +256,9 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
     <script src="js/moment-2.8.3.js"></script>
     <script src="js/clndr.js"></script>
-    <script src="js/test.js"></script>
 
     <!-- slick -->
     <script src="js/slick.min.js"></script>
-
     <script src="js/script.js"></script>
   </body>
 </html>
